@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function UpdateUser() {
   const { id } = useParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();  // Replaced useHistory with useNavigate
 
   useEffect(() => {
     axios.get(`/users/${id}`)
@@ -20,7 +20,7 @@ function UpdateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.put(`/users/${id}`, { name, email })
-      .then(() => history.push('/'))
+      .then(() => navigate('/'))  // Replaced history.push with navigate
       .catch(error => console.error("Error updating user: ", error));
   };
 

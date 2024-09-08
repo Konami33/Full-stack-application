@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();  // Updated useHistory to useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('/users', { name, email })
-      .then(() => history.push('/'))
+      .then(() => navigate('/'))  // Updated history.push('/') to navigate('/')
       .catch(error => console.error("Error adding user: ", error));
   };
 

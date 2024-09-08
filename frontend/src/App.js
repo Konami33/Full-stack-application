@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import UserList from './components/UserList';
 import AddUser from './components/AddUser';
 import UpdateUser from './components/UpdateUser';
@@ -22,12 +22,12 @@ function App() {
             </ul>
           </div>
         </nav>
-        <Switch>
-          <Route exact path="/" component={UserList} />
-          <Route path="/add-user" component={AddUser} />
-          <Route path="/update-user/:id" component={UpdateUser} />
-          <Route path="/delete-user/:id" component={DeleteUser} />
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<UserList />} />
+          <Route path="/add-user" element={<AddUser />} />
+          <Route path="/update-user/:id" element={<UpdateUser />} />
+          <Route path="/delete-user/:id" element={<DeleteUser />} />
+        </Routes>
       </div>
     </Router>
   );
